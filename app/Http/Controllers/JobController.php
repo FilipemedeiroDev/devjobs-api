@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Services\JobService;
-use Illuminate\Http\Client\Request;
+use App\Models\CreateJobRequest;
+use Illuminate\Http\Request;
 
 class JobController extends Controller
 {
@@ -12,7 +13,9 @@ class JobController extends Controller
      *
      * @return void
      */
-    public function __construct(private readonly JobService $jobService) { }
+    public function __construct(private readonly JobService $jobService)
+    {
+    }
 
     public function getAllJobs()
     {
@@ -24,5 +27,16 @@ class JobController extends Controller
         return $this->jobService->getJobById($id);
     }
 
-    
+    public function publishJob(Request $request)
+    {
+
+        $creationRequest = new CreateJobRequest($request);
+
+        $job = $this->jobService->publishJob($creationRequest);
+
+        return response()->json([
+            'job' => $job,
+            'message' => 'CREATED'
+        ], 201);
+    }
 }

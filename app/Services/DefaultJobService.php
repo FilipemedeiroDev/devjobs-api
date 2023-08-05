@@ -3,10 +3,13 @@
 namespace App\Services;
 
 use App\Repositories\JobRepository;
+use App\Models\CreateJobRequest;
 
 class DefaultJobService implements JobService
 {
-    public function __construct(private readonly JobRepository $repository) { }
+    public function __construct(private readonly JobRepository $repository)
+    {
+    }
 
     public function getAllJobs()
     {
@@ -17,6 +20,9 @@ class DefaultJobService implements JobService
     {
         return $this->repository->getJobById($id);
     }
-  
-}
 
+    public function publishJob(CreateJobRequest $jobRequest)
+    {
+        return $this->repository->publishJob($jobRequest);
+    }
+}

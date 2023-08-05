@@ -2,11 +2,13 @@
 
 namespace App\Services;
 
-interface JobService 
+use App\Models\CreateJobRequest;
+
+interface JobService
 {
     public function getAllJobs();
 
     public function getJobById(int $id);
-  
-}
 
+    public function publishJob(CreateJobRequest $jobRequest);
+}
