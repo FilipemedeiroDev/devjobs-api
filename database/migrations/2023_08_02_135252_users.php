@@ -17,16 +17,16 @@ return new class extends Migration
             $table->string('last_name')->nonNullable();
             $table->string('email')->unique()->nonNullable();
             $table->string('password')->nonNullable();
-            $table->string('role');
-            $table->string('country_code');
-            $table->string('state');
-            $table->string('city');
-            $table->string('address');
-            $table->string('neighborhood');
-            $table->string('address_number');
-            $table->string('avatar_url');
-            $table->string('bio');
-            $table->string('curriculum_url');
+            $table->string('role')->nullable();
+            $table->string('country_code')->nullable();
+            $table->string('state')->nullable();
+            $table->string('city')->nullable();
+            $table->string('address')->nullable();
+            $table->string('neighborhood')->nullable();
+            $table->string('address_number')->nullable();
+            $table->string('avatar_url')->nullable();
+            $table->string('bio')->nullable();
+            $table->string('curriculum_url')->nullable();
             $table->timestamps();
         });
     }

@@ -7,22 +7,22 @@ use App\Models\CreateJobRequest;
 
 class DefaultJobService implements JobService
 {
-    public function __construct(private readonly JobRepository $repository)
+    public function __construct(private readonly JobRepository $jobRepository)
     {
     }
 
     public function getAllJobs()
     {
-        return $this->repository->getAllJobs();
+        return $this->jobRepository->getAllJobs();
     }
 
     public function getJobById(int $id)
     {
-        return $this->repository->getJobById($id);
+        return $this->jobRepository->getJobById($id);
     }
 
     public function publishJob(CreateJobRequest $jobRequest)
     {
-        return $this->repository->publishJob($jobRequest);
+        return $this->jobRepository->publishJob($jobRequest);
     }
 }

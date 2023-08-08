@@ -20,3 +20,6 @@ $router->get('/', function () use ($router) {
 $router->get('/jobs', 'JobController@getAllJobs');
 $router->get('/jobs/{id}', 'JobController@getJobById');
 $router->post('/jobs', 'JobController@publishJob');
+
+$router->get('users/{id}', 'UserController@getUserById');
+$router->post('users', 'UserController@createUser');

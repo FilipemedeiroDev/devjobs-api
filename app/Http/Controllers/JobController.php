@@ -8,11 +8,7 @@ use Illuminate\Http\Request;
 
 class JobController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+
     public function __construct(private readonly JobService $jobService)
     {
     }

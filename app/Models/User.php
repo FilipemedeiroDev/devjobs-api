@@ -28,7 +28,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'city',
         'address',
         'neighborhood',
-        'number',
+        'address_number',
         'avatar_url',
         'bio',
         'curriculum_url',
