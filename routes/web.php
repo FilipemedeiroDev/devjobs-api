@@ -2,6 +2,9 @@
 
 /** @var \Laravel\Lumen\Routing\Router $router */
 
+use Illuminate\Support\Facades\Route;
+
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -19,7 +22,13 @@ $router->get('/', function () use ($router) {
 
 $router->get('/jobs', 'JobController@getAllJobs');
 $router->get('/jobs/{id}', 'JobController@getJobById');
-$router->post('/jobs', 'JobController@publishJob');
 
-$router->get('users/{id}', 'UserController@getUserById');
+
+//$router->get('users/{id}', 'UserController@getUserById');
 $router->post('users', 'UserController@createUser');
+$router->post('login', 'UserController@login');
+
+Route::group(['middleware' => 'auth:api'], function ($router) {
+    $router->post('/jobs', 'JobController@publishJob');
+    $router->get('me', 'UserController@me');
+});

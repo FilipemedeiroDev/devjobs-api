@@ -11,12 +11,16 @@ class UserController extends Controller
 {
     public function __construct(private readonly UserService $userService)
     {
+        $this->middleware('auth:api', ['except' => ['login', 'createUser']]);
     }
 
-    public function getUserById($id)
+    public function me()
     {
-        return $this->userService->getUserById($id);
+        return response()->json(
+            auth()->user()
+        );
     }
+
 
     public function createUser(Request $request)
     {
@@ -28,5 +32,26 @@ class UserController extends Controller
             'user' => $user,
             'message' => 'CREATED'
         ], 201);
+    }
+
+    public function login()
+    {
+        $credentials = request(['email', 'password']);
+        if (!$token = auth()->attempt($credentials)) {
+            return response()->json([
+                'message' => 'Unauthorized'
+            ], 401);
+        }
+
+        return $this->respondWithToken($token);
+    }
+
+    protected function respondWithToken($token)
+    {
+        return response()->json([
+            'access_token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' => auth('api')->factory()->getTTL() * 60 // default 1 hour
+        ]);
     }
 }

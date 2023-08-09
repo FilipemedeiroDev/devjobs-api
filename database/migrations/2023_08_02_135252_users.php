@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('last_name')->nonNullable();
             $table->string('email')->unique()->nonNullable();
             $table->string('password')->nonNullable();
-            $table->string('role')->nullable();
+            $table->string('role')->nullable()->default('USER');
             $table->string('country_code')->nullable();
             $table->string('state')->nullable();
             $table->string('city')->nullable();
