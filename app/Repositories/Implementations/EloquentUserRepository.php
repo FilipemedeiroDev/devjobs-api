@@ -5,7 +5,6 @@ namespace App\Repositories\Implementations;
 use App\Repositories\UserRepository;
 use App\Models\User;
 use App\Models\Requests\CreateUserRequest;
-use App\Repositories\UserRespository;
 
 class EloquentUserRepository implements UserRepository
 {

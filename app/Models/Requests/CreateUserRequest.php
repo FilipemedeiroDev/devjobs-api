@@ -31,7 +31,7 @@ class CreateUserRequest
         $this->first_name = $request->input('first_name');
         $this->last_name = $request->input('last_name');
         $this->email = $request->input('email');
-        $this->role = $request->input('role');
+        $this->role = 'USER';
         $this->country_code = $request->input('country_code');
         $this->state = $request->input('state');
         $this->city = $request->input('city');

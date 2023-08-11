@@ -15,12 +15,13 @@ return new class extends Migration
             $table->id();
             $table->foreignId('owner_id');
             $table->foreign('owner_id')->references('id')->on('users');
-            $table->string('short_name');
-            $table->string('full_name');
-            $table->string('photo_url');
-            $table->string('country_code');
-            $table->string('state');
-            $table->string('city');
+            $table->string('short_name')->nonNullable();
+            $table->string('full_name')->nonNullable();
+            $table->string('photo_url')->nullable();
+            $table->string('country_code')->nonNullable();
+            $table->string('state')->nonNullable();
+            $table->string('city')->nonNullable();
+            $table->string('status')->nullable()->default('ENABLED');
             $table->timestamps();
         });
     }

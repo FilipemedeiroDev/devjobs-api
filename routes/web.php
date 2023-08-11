@@ -20,15 +20,17 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->get('/jobs', 'JobController@getAllJobs');
-$router->get('/jobs/{id}', 'JobController@getJobById');
 
 
 //$router->get('users/{id}', 'UserController@getUserById');
 $router->post('users', 'UserController@createUser');
 $router->post('login', 'UserController@login');
 
+$router->get('/jobs', 'JobController@getAllJobs');
+$router->get('/jobs/{id}', 'JobController@getJobById');
+
 Route::group(['middleware' => 'auth:api'], function ($router) {
+    $router->post('companies', 'CompanyController@createCompany');
     $router->post('/jobs', 'JobController@publishJob');
     $router->get('me', 'UserController@me');
 });

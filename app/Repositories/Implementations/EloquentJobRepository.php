@@ -5,7 +5,6 @@ namespace App\Repositories\Implementations;
 use App\Repositories\JobRepository;
 use App\Models\Job;
 use App\Models\Requests\CreateJobRequest;
-use App\Repositories\JobRespository;
 
 class EloquentJobRepository implements JobRepository
 {

@@ -16,6 +16,7 @@ class Company extends Model
         'country_code',
         'state',
         'city',
+        'status'
     ];
 
     protected $hidden = [

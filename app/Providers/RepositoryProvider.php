@@ -4,8 +4,11 @@ namespace App\Providers;
 
 use App\Repositories\Implementations\EloquentJobRepository;
 use App\Repositories\Implementations\EloquentUserRepository;
+use App\Repositories\Implementations\EloquentCompanyRepository;
 use App\Repositories\JobRepository;
 use App\Repositories\UserRepository;
+use App\Repositories\CompanyRepository;
+
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryProvider extends ServiceProvider
@@ -29,5 +32,6 @@ class RepositoryProvider extends ServiceProvider
     {
         $this->app->bind(JobRepository::class, EloquentJobRepository::class);
         $this->app->bind(UserRepository::class, EloquentUserRepository::class);
+        $this->app->bind(CompanyRepository::class, EloquentCompanyRepository::class);
     }
 }
