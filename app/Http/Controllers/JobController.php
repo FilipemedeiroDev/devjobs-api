@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\JobService;
-use App\Models\CreateJobRequest;
+use App\Models\Requests\CreateJobRequest;
 use Illuminate\Http\Request;
 
 class JobController extends Controller

@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Models\CreateJobRequest;
+use App\Models\Requests\CreateJobRequest;
 
 interface JobService
 {

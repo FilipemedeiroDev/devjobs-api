@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Repositories\Implementations;
 
 use App\Repositories\UserRepository;
 use App\Models\User;
-use App\Models\CreateUserRequest;
-
+use App\Models\Requests\CreateUserRequest;
+use App\Repositories\UserRespository;
 
 class EloquentUserRepository implements UserRepository
 {
@@ -23,5 +23,12 @@ class EloquentUserRepository implements UserRepository
         $newUser->save();
 
         return $newUser;
+    }
+
+    public function findUserByEmail(string $email)
+    {
+        $user = User::where('email', $email)->first();
+
+        return $user;
     }
 }

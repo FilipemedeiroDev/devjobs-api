@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Models\CreateJobRequest;
+use App\Models\Requests\CreateJobRequest;
 
 interface JobRepository
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Requests;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -50,6 +50,11 @@ class CreateUserRequest
     public function getPassword(): string
     {
         return $this->password;
+    }
+
+    public function getEmail(): string
+    {
+        return $this->email;
     }
 
     public function toArray(): array

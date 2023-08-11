@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\Implementations;
 
 use App\Repositories\JobRepository;
-use App\Models\CreateJobRequest;
+use App\Models\Requests\CreateJobRequest;
+use App\Services\JobService;
 
 class DefaultJobService implements JobService
 {

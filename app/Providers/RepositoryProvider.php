@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Repositories\EloquentJobRepository;
-use App\Repositories\EloquentUserRepository;
+use App\Repositories\Implementations\EloquentJobRepository;
+use App\Repositories\Implementations\EloquentUserRepository;
 use App\Repositories\JobRepository;
 use App\Repositories\UserRepository;
 use Illuminate\Support\ServiceProvider;
