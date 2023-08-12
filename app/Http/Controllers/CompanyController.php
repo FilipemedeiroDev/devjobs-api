@@ -15,12 +15,12 @@ class CompanyController extends Controller
 
     public function findById(int $id)
     {
-
+        return $this->companyService->findById($id);
     }
 
     public function findByIdAndUserId(int $id, int $userId)
     {
-
+        return $this->companyService->findByIdAndUserId($id, $userId);
     }
 
     public function createCompany(Request $request)
