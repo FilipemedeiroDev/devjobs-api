@@ -14,7 +14,13 @@ class DefaultCompanyService implements CompanyService
 
     public function findById(int $id)
     {
-        return $this->companyRepository->findById($id);
+        $company = $this->companyRepository->findById($id);
+
+        if(!$company) {
+            abort(404, 'Company not found');
+        }
+
+        return $company;
     }
 
     public function findByIdAndUserId(int $id, int $userId)
@@ -22,10 +28,13 @@ class DefaultCompanyService implements CompanyService
         return $this->companyRepository->findByIdAndUserId($id, $userId);
     }
 
-    public function createCompany(CreateCompanyRequest $companyRequest)
+    public function findAllByUserId(int $userId)
     {
-        $userId = auth()->user()->getAuthIdentifier();
+        return $this->companyRepository->findAllByUserId($userId);
+    }
 
+    public function createCompany(int $userId, CreateCompanyRequest $companyRequest)
+    {
         return $this->companyRepository->createCompany($userId, $companyRequest);
     }
 }

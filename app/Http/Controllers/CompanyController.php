@@ -15,19 +15,27 @@ class CompanyController extends Controller
 
     public function findById(int $id)
     {
+        $company = $this->companyService->findById($id);
 
+        return response()->json($company);
     }
 
-    public function findByIdAndUserId(int $id, int $userId)
-    {
 
+    public function findAllByUserId()
+    {
+        $userId = auth()->user()->getAuthIdentifier();
+
+        $companies = $this->companyService->findAllByUserId($userId);
+
+        return response()->json($companies);
     }
 
     public function createCompany(Request $request)
     {
         $creationRequest = new CreateCompanyRequest($request);
+        $userId = auth()->user()->getAuthIdentifier();
 
-        $company = $this->companyService->createCompany($creationRequest);
+        $company = $this->companyService->createCompany($userId, $creationRequest);
 
         return response()->json([
             'company' => $company,

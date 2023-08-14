@@ -24,6 +24,13 @@ class EloquentCompanyRepository implements CompanyRepository
         return $company;
     }
 
+    public function findAllByUserId(int $userId)
+    {
+        $company = Company::where(['owner_id' => $userId])->get();
+
+        return $company;
+    }
+
     public function createCompany(int $userId, CreateCompanyRequest $companyRequest)
     {
         $newCompany = new Company();

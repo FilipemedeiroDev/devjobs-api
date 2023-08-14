@@ -10,5 +10,7 @@ interface CompanyService
 
     public function findByIdAndUserId(int $id, int $userId);
 
-    public function createCompany(CreateCompanyRequest $companyRequest);
+    public function findAllByUserId(int $userId);
+
+    public function createCompany(int $userId, CreateCompanyRequest $companyRequest);
 }
