@@ -10,5 +10,5 @@ interface JobService
 
     public function getJobById(int $id);
 
-    public function publishJob(CreateJobRequest $jobRequest);
+    public function publishJob(int $userId, CreateJobRequest $jobRequest);
 }

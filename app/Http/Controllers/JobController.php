@@ -25,10 +25,10 @@ class JobController extends Controller
 
     public function publishJob(Request $request)
     {
-
         $creationRequest = new CreateJobRequest($request);
+        $userId = auth()->user()->getAuthIdentifier();
 
-        $job = $this->jobService->publishJob($creationRequest);
+        $job = $this->jobService->publishJob($userId, $creationRequest);
 
         return response()->json([
             'job' => $job,

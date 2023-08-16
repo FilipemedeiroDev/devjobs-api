@@ -33,6 +33,12 @@ class CreateJobRequest
         $this->updated_at = Carbon::now();
     }
 
+    public function getCompanyId()
+    {
+        return $this->company_id;
+    }
+
+
     public function toArray(): array
     {
         return [

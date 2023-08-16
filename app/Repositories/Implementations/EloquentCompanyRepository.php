@@ -17,9 +17,9 @@ class EloquentCompanyRepository implements CompanyRepository
     public function findByIdAndUserId(int $id, int $userId)
     {
         $company = Company::where([
-            "id" => $id,
-            "owner_id" => $userId
-        ]);
+            'id' => $id,
+            'owner_id' => $userId
+        ])->first();
 
         return $company;
     }
