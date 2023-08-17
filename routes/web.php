@@ -37,6 +37,7 @@ Route::group(['middleware' => 'auth:api'], function ($router) {
     $router->get('/companies/{id}', 'CompanyController@findById');
     $router->post('/companies', 'CompanyController@createCompany');
     $router->put('/companies/{id}', 'CompanyController@updateCompany');
+    $router->delete('/companies/{id}', 'CompanyController@deleteCompany');
 
     $router->post('/jobs', 'JobController@publishJob');
 });

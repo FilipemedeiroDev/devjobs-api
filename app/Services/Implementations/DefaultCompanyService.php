@@ -46,8 +46,18 @@ class DefaultCompanyService implements CompanyService
             abort(404, 'Company not found');
         }
 
-        return $this->companyRepository->updateCompany($id, $userId, $companyRequest, $companyToUpdate);
+        return $this->companyRepository->updateCompany($userId, $companyRequest, $companyToUpdate);
     }
 
+    public function deleteCompany(int $id, int $userId)
+    {
+        
+        $companyToDelete = $this->findByIdAndUserId($id, $userId);
 
+        if(!$companyToDelete) {
+            abort(404, 'Company not found');
+        }
+
+        return $this->companyRepository->deleteCompany($companyToDelete);
+    }
 }

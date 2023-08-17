@@ -39,7 +39,7 @@ class CompanyController extends Controller
 
         return response()->json([
             'company' => $company,
-            'message' => 'CREATED'
+            'message' => 'successfully created company'
         ], 201);
     }
 
@@ -52,7 +52,17 @@ class CompanyController extends Controller
 
         return response()->json([
             'company' => $companyUpdated,
-            'message' => 'UPDATED'
+            'message' => 'successfully updated company'
+        ], 200);
+    }
+
+    public function deleteCompany(Request $request, int $id) 
+    {   
+        $userId = auth()->user()->getAuthIdentifier();
+        $this->companyService->deleteCompany($id, $userId);
+
+        return response()->json([
+            'message' => 'successfully deleted company'
         ], 200);
     }
 }

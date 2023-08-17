@@ -21,7 +21,13 @@ class DefaultJobService implements JobService
 
     public function getJobById(int $id)
     {
-        return $this->jobRepository->getJobById($id);
+        $job = $this->jobRepository->getJobById($id);
+
+        if(!$job) {
+            abort(404, 'Job not found');
+        }
+
+        return $job;
     }
 
     public function publishJob(int $userId, CreateJobRequest $jobRequest)

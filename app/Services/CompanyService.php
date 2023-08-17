@@ -16,5 +16,5 @@ interface CompanyService
 
     public function updateCompany(int $id, int $userId, CreateCompanyRequest $companyRequest);
 
-
+    public function deleteCompany(int $id, int $userId);
 }

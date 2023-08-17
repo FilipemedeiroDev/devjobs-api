@@ -15,5 +15,7 @@ interface CompanyRepository
 
     public function createCompany(int $userId, CreateCompanyRequest $companyRequest);
 
-    public function updateCompany(int $id, int $userId, CreateCompanyRequest $companyRequest, Company $companyUpdated);
+    public function updateCompany(int $userId, CreateCompanyRequest $companyRequest, Company $companyUpdated);
+
+    public function deleteCompany(Company $companyToDelete);
 }

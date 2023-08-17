@@ -42,7 +42,7 @@ class EloquentCompanyRepository implements CompanyRepository
         return $newCompany;
     }
 
-    public function updateCompany(int $id, int $userId,CreateCompanyRequest $companyRequest, Company $companyUpdated)
+    public function updateCompany(int $userId,CreateCompanyRequest $companyRequest, Company $companyUpdated)
     {
 
         $companyUpdated->fill($companyRequest->toArray());
@@ -50,5 +50,10 @@ class EloquentCompanyRepository implements CompanyRepository
         $companyUpdated->save();
 
         return $companyUpdated;
+    }
+
+    public function deleteCompany(Company $companyToDelete)
+    {
+        return  Company::destroy($companyToDelete->id);
     }
 }
