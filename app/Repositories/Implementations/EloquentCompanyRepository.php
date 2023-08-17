@@ -41,4 +41,14 @@ class EloquentCompanyRepository implements CompanyRepository
 
         return $newCompany;
     }
+
+    public function updateCompany(int $id, int $userId,CreateCompanyRequest $companyRequest, Company $companyUpdated)
+    {
+
+        $companyUpdated->fill($companyRequest->toArray());
+        $companyUpdated->owner_id = $userId;
+        $companyUpdated->save();
+
+        return $companyUpdated;
+    }
 }

@@ -37,4 +37,17 @@ class DefaultCompanyService implements CompanyService
     {
         return $this->companyRepository->createCompany($userId, $companyRequest);
     }
+
+    public function updateCompany(int $id, int $userId, createCompanyRequest $companyRequest)
+    {
+        $companyToUpdate = $this->findByIdAndUserId($id, $userId);
+
+        if(!$companyToUpdate) {
+            abort(404, 'Company not found');
+        }
+
+        return $this->companyRepository->updateCompany($id, $userId, $companyRequest, $companyToUpdate);
+    }
+
+
 }

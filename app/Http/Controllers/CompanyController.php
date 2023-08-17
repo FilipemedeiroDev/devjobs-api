@@ -42,4 +42,17 @@ class CompanyController extends Controller
             'message' => 'CREATED'
         ], 201);
     }
+
+    public function updateCompany(Request $request, int $id)
+    {
+        $creationRequest = new CreateCompanyRequest($request);
+        $userId = auth()->user()->getAuthIdentifier();
+
+        $companyUpdated = $this->companyService->updateCompany($id, $userId, $creationRequest);
+
+        return response()->json([
+            'company' => $companyUpdated,
+            'message' => 'UPDATED'
+        ], 200);
+    }
 }

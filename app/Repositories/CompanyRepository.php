@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Requests\createCompanyRequest;
+use App\Models\Company;
 
 interface CompanyRepository
 {
@@ -13,4 +14,6 @@ interface CompanyRepository
     public function findAllByUserId(int $userId);
 
     public function createCompany(int $userId, CreateCompanyRequest $companyRequest);
+
+    public function updateCompany(int $id, int $userId, CreateCompanyRequest $companyRequest, Company $companyUpdated);
 }
