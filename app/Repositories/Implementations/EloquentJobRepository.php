@@ -27,4 +27,18 @@ class EloquentJobRepository implements JobRepository
 
         return $newJob;
     }
+
+    public function updateJob(CreateJobRequest $jobRequest, Job $jobUpdated)
+    {
+        $jobUpdated->fill($jobRequest->toArray());
+        $jobUpdated->save();
+
+        return $jobUpdated;
+    }
+
+    public function  deleteJob(Job $jobDeleted)
+    {
+        return Job::destroy($jobDeleted->id);
+    }
+
 }

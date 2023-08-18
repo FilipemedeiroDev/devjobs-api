@@ -32,7 +32,30 @@ class JobController extends Controller
 
         return response()->json([
             'job' => $job,
-            'message' => 'CREATED'
+            'message' => 'successfully created Job'
         ], 201);
+    }
+
+    public function updateJob(Request $request, $id) 
+    {
+        $creationRequest = new CreateJobRequest($request);
+        $userId = auth()->user()->getAuthIdentifier();
+
+        $jobUpdated = $this->jobService->updateJob($id, $userId, $creationRequest);
+
+        return response()->json([
+            'job' => $jobUpdated,
+            'message' => 'successfully updated Job'
+        ], 200);
+    }
+
+    public function deleteJob(Request $request, $id)
+    {
+        $userId = auth()->user()->getAuthIdentifier();
+        $this->jobService->deleteJob($id, $userId);
+
+        return response()->json([
+            'message' => 'successfully deleted Job'
+        ], 200);
     }
 }
