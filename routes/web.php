@@ -44,4 +44,5 @@ Route::group(['middleware' => 'auth:api'], function ($router) {
     $router->delete('/jobs/{id}', 'JobController@deleteJob');
 
     $router->post('/submissions', 'SubmissionController@createSubmission');
+    $router->get('/submissions', 'SubmissionController@getAllSubmissionByUserId');
 });

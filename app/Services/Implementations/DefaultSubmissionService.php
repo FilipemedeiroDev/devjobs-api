@@ -19,6 +19,11 @@ class DefaultSubmissionService implements SubmissionService
         return $this->submissionRepository->findSubmissionByJobIdAndUserId($jobId, $userId);
     }
 
+    public function getAllSubmissionByUserId(int $userId)
+    {
+        return $this->submissionRepository->getAllSubmissionByUserId($userId);
+    }
+
     public function createSubmission(CreateSubmissionRequest $submissionRequest, int $userId)
     {
         $submissionExists = $this->findSubmissionByJobIdAndUserId($submissionRequest->getJobId(), $userId);

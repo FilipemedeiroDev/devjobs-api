@@ -13,6 +13,15 @@ class SubmissionController extends Controller
     }
 
 
+    public function getAllSubmissionByUserId()
+    {
+        $userId = auth()->user()->getAuthIdentifier();
+
+        $submissions = $this->submissionService->getAllSubmissionByUserId($userId);
+
+        return response()->json($submissions, 200);
+    }
+
     public function createSubmission(Request $request)
     {
         $creationRequest = new CreateSubmissionRequest($request);

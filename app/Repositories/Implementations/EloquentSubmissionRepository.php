@@ -20,6 +20,15 @@ class EloquentSubmissionRepository implements SubmissionRepository
         return $submission;
     }
 
+    public function getAllSubmissionByUserId(int $userId)
+    {
+        $submissions = Submission::where([
+            'user_id' => $userId
+        ])->get();
+
+        return $submissions;
+    }
+
     public function createSubmission(int $jobId, int $userId)
     {
         $newSubmission = new Submission();
