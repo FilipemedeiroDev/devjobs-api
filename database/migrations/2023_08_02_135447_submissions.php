@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('job_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('job_id')->references('id')->on('jobs');
-            $table->string('status');
+            $table->string('status')->nullable();
             $table->timestamp('submitted_at');
         });
     }

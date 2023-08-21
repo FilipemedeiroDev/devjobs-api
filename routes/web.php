@@ -42,4 +42,6 @@ Route::group(['middleware' => 'auth:api'], function ($router) {
     $router->post('/jobs', 'JobController@publishJob');
     $router->put('/jobs/{id}', 'JobController@updateJob');
     $router->delete('/jobs/{id}', 'JobController@deleteJob');
+
+    $router->post('/submissions', 'SubmissionController@createSubmission');
 });

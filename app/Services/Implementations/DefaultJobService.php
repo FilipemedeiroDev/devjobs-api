@@ -47,8 +47,8 @@ class DefaultJobService implements JobService
          $companyAuthenticated = $this->companyService->findByIdAndUserId($jobRequest->getCompanyId(), $userId);
 
          if(!$companyAuthenticated) {
-            abort(400, 'this operation could not be performed');
-         }  
+            abort(401, 'you do not have permission to edit this vacancy');
+         }
 
         return $this->jobRepository->updateJob($jobRequest, $jobToUpdate);
     }
@@ -57,10 +57,10 @@ class DefaultJobService implements JobService
     {
          $jobToDelete = $this->getJobById($id);
          $companyAuthenticated = $this->companyService->findByIdAndUserId($jobToDelete->company_id, $userId);
-         
+
          if($jobToDelete->company_id !== $companyAuthenticated->id) {
             abort(400, 'this operation could not be performed');
-         } 
+         }
 
          return $this->jobRepository->deleteJob($jobToDelete);
     }

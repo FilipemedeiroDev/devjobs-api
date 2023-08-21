@@ -51,11 +51,11 @@ class DefaultCompanyService implements CompanyService
 
     public function deleteCompany(int $id, int $userId)
     {
-        
+
         $companyToDelete = $this->findByIdAndUserId($id, $userId);
 
         if(!$companyToDelete) {
-            abort(404, 'Company not found');
+            abort(404, 'you do not have permission to delete this vacancy');
         }
 
         return $this->companyRepository->deleteCompany($companyToDelete);

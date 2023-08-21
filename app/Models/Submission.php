@@ -8,10 +8,12 @@ class Submission extends Model
 {
 
 
-    protected $fillabe = [
+    protected $fillable = [
         'user_id',
         'job_id',
         'status',
         'submitted_at'
     ];
+
+    public $timestamps = false;
 };
