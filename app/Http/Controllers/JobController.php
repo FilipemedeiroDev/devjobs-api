@@ -16,7 +16,7 @@ class JobController extends Controller
     public function getAllJobs()
     {
         $jobs =  $this->jobService->getAllJobs();
-        
+
         return response()->json([
             'jobs' => $jobs,
         ],200);
@@ -40,7 +40,7 @@ class JobController extends Controller
         ], 201);
     }
 
-    public function updateJob(Request $request, $id) 
+    public function updateJob(Request $request, $id)
     {
         $creationRequest = new CreateJobRequest($request);
         $userId = auth()->user()->getAuthIdentifier();
