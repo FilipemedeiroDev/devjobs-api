@@ -15,7 +15,11 @@ class JobController extends Controller
 
     public function getAllJobs()
     {
-        return $this->jobService->getAllJobs();
+        $jobs =  $this->jobService->getAllJobs();
+        
+        return response()->json([
+            'jobs' => $jobs,
+        ],200);
     }
 
     public function getJobById(Request $request, $id)
