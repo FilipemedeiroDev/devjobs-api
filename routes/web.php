@@ -29,12 +29,14 @@ $router->post('/login', 'UserController@login');
 $router->get('/jobs', 'JobController@getAllJobs');
 $router->get('/jobs/{id}', 'JobController@getJobById');
 
+$router->get('/companies/{id}', 'CompanyController@findById');
+
+
 Route::group(['middleware' => 'auth:api'], function ($router) {
-
+    
     $router->get('/me', 'UserController@me');
-
+    
     $router->get('/companies', 'CompanyController@findAllByUserId');
-    $router->get('/companies/{id}', 'CompanyController@findById');
     $router->post('/companies', 'CompanyController@createCompany');
     $router->put('/companies/{id}', 'CompanyController@updateCompany');
     $router->delete('/companies/{id}', 'CompanyController@deleteCompany');
